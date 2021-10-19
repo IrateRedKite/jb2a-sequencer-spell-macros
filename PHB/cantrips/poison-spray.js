@@ -1,5 +1,4 @@
 let tokenD = canvas.tokens.get(args[0].tokenId);
-let targetD = Array.from(game.user.targets)[0];
 new Sequence()
     .effect()
         .file("jb2a.magic_signs.rune.conjuration.intro.green")
