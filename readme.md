@@ -11,7 +11,7 @@ A set of macros for use with [J2BA's Animated Assets](https://www.jb2a.com). Man
 - **WarpGate** For summons and spells like dancing lights, spiritual weapon, etc
 
 ## Usage
-These macros are meant to be used in a spell or item's 'On Use Macro' field, that comes with MIDI QOL.
+These macros are meant to be used in the item 'On Use Macro' field' that comes with MIDI QOL.
 
 
 ## Credit
