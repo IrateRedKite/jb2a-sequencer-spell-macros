@@ -1,0 +1,18 @@
+let tokenD = canvas.tokens.get(args[0].tokenId);
+let targetD = Array.from(game.user.targets)[0];
+new Sequence()
+    .effect()
+        .file("jb2a.magic_signs.rune.abjuration.intro.yellow")
+        .scale(0.3)
+        .atLocation(tokenD)
+        .waitUntilFinished(-550)
+    .effect()
+        .file("jb2a.shield.01.intro.purple")
+        .atLocation(targetD)
+        .scale(0.5)
+        .opacity(0.5)
+    .effect()
+        .file("jb2a.magic_signs.rune.abjuration.outro.yellow")
+        .scale(0.3)
+        .atLocation(tokenD)
+    .play()
