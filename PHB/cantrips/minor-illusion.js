@@ -1,4 +1,10 @@
-let tokenD = canvas.tokens.get(args[0].tokenId);
+const casterToken = canvas.tokens.get(args[0]);
+if (!casterToken) {
+	ui.notifications.warn("Please select a valid token to use this ability.");
+	return;
+}
+
+const casterId = casterToken.tokenId;
 await warpgate.spawn("Minor Illusion", {}, {
     pre: async (location) => {
         const seq = new Sequence()
@@ -13,12 +19,12 @@ await warpgate.spawn("Minor Illusion", {}, {
         .effect()
             .file("jb2a.magic_signs.rune.illusion.intro.purple")
             .scale(0.3)
-            .atLocation(tokenD)
+            .atLocation(casterId)
             .waitUntilFinished(-550)
         .effect()
             .file("jb2a.magic_signs.rune.illusion.loop.purple")
             .scale(0.3)
-            .atLocation(tokenD)
+            .atLocation(casterId)
             .fadeIn(100)
             .fadeOut(100)
             .waitUntilFinished(-550)
@@ -26,7 +32,7 @@ await warpgate.spawn("Minor Illusion", {}, {
         .effect()
             .file("jb2a.magic_signs.rune.illusion.outro.purple")
             .scale(0.3)
-            .atLocation(tokenD)  
+            .atLocation(casterId)  
         seq.play();
 
         // Sleep for 500ms
