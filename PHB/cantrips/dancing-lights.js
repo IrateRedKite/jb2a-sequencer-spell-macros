@@ -1,4 +1,10 @@
-const casterId = canvas.tokens.get(args[0].tokenId);
+const casterToken = canvas.tokens.get(args[0]);
+if (!casterToken) {
+	ui.notifications.warn("Please select a valid token to use this ability.");
+	return;
+}
+
+const casterId = casterToken.tokenId;
 
 let dancingLightCount = 1;
 let currentDancingLightCount = 0;

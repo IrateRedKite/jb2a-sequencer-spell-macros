@@ -1,4 +1,10 @@
-const casterId = canvas.tokens.get(args[0].tokenId);
+const casterToken = canvas.tokens.get(args[0]);
+if (!casterToken) {
+	ui.notifications.warn("Please select a valid token to use this ability.");
+	return;
+}
+
+const casterId = casterToken.tokenId;
 new Sequence()
     .effect()
         .file("jb2a.magic_signs.rune.abjuration.intro.blue")
@@ -17,4 +23,4 @@ new Sequence()
         .file("jb2a.magic_signs.rune.abjuration.outro.blue")
         .scale(0.3)
         .atLocation(casterId)
-    .play()
+    .play();
