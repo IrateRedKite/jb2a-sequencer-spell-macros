@@ -1,21 +1,21 @@
-let tokenD = canvas.tokens.get(args[0].tokenId);
-let targetD = Array.from(game.user.targets)[0];
+const casterId = canvas.tokens.get(args[0].tokenId);
+const targetId = Array.from(game.user.targets)[0];
 new Sequence()
     .effect()
         .file("jb2a.magic_signs.rune.necromancy.intro.purple")
         .scale(0.3)
-        .atLocation(tokenD)
+        .atLocation(casterId)
     .effect()
         .file("jb2a.energy_strands.range.standard.purple")
         .gridSize(1)
-        .atLocation(tokenD)
+        .atLocation(casterId)
         .reachTowards(args[0].targets[0])
         .missed(args[0].hitTargets.length === 0)
         .filter("Glow", { color: 0xffffff})
         .waitUntilFinished(-1200)
     .effect()
         .file("jb2a.arcane_hand.purple")
-        .atLocation(targetD)
+        .atLocation(targetId)
         .fadeIn(500)
         .fadeOut(500)
         .filter("Glow", { color: 0xffffff })

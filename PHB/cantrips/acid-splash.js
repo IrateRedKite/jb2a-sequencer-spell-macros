@@ -1,20 +1,20 @@
-let tokenD = canvas.tokens.get(args[0].tokenId);
-let targetD = Array.from(game.user.targets)[0];
+const casterId = canvas.tokens.get(args[0].tokenId);
+const targetId = Array.from(game.user.targets)[0];
 new Sequence()
     .effect()
         .file("jb2a.magic_signs.rune.conjuration.intro.green")
         .scale(0.3)
-        .atLocation(tokenD)
+        .atLocation(casterId)
     .effect()
         .file("jb2a.bullet.01.green")
-        .atLocation(tokenD)
+        .atLocation(casterId)
         .reachTowards(args[0].targets[0])
         .missed(args[0].hitTargets.length === 0)
         .filter("Glow", { color: 0xb0bf1a })
         .waitUntilFinished()
     .effect()
         .file("jb2a.extras.tmfx.outflow.circle.01")
-        .atLocation(targetD)
+        .atLocation(targetId)
         .fadeIn(500)
         .fadeOut(500)
         .filter("Glow", { color: 0xb0bf1a })

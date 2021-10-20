@@ -1,4 +1,4 @@
-let tokenD = canvas.tokens.get(args[0].tokenId);
+const casterId = canvas.tokens.get(args[0].tokenId);
 await warpgate.spawn("Mage Hand", {}, {
     pre: async (location) => {
         const seq = new Sequence()
@@ -13,12 +13,12 @@ await warpgate.spawn("Mage Hand", {}, {
         .effect()
             .file("jb2a.magic_signs.rune.conjuration.intro.blue")
             .scale(0.3)
-            .atLocation(tokenD)
+            .atLocation(casterId)
             .waitUntilFinished(-550)
         .effect()
             .file("jb2a.magic_signs.rune.conjuration.loop.blue")
             .scale(0.3)
-            .atLocation(tokenD)
+            .atLocation(casterId)
             .fadeIn(100)
             .fadeOut(100)
             .waitUntilFinished(-550)
@@ -26,7 +26,7 @@ await warpgate.spawn("Mage Hand", {}, {
         .effect()
             .file("jb2a.magic_signs.rune.conjuration.outro.blue")
             .scale(0.3)
-            .atLocation(tokenD)  
+            .atLocation(casterId)  
         seq.play();
 
         // Sleep for 500ms

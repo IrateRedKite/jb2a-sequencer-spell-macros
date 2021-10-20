@@ -1,19 +1,19 @@
-let tokenD = canvas.tokens.get(args[0].tokenId);
-let targetD = Array.from(game.user.targets)[0];
+const casterId = canvas.tokens.get(args[0].tokenId);
+const targetId = Array.from(game.user.targets)[0];
 new Sequence()
     .effect()
         .file("jb2a.magic_signs.rune.evocation.intro.blue")
         .scale(0.3)
-        .atLocation(tokenD)
+        .atLocation(casterId)
     .effect()
         .file("jb2a.unarmed_strike.magical.01.blue")
-        .atLocation(tokenD)
+        .atLocation(casterId)
         .reachTowards(args[0].targets[0])
         .missed(args[0].hitTargets.length === 0)
         .waitUntilFinished(-800)
     .effect()
         .file("jb2a.lightning_ball.blue")
-        .atLocation(targetD)
+        .atLocation(targetId)
         .fadeIn(500)
         .fadeOut(500)
         .duration(1500)

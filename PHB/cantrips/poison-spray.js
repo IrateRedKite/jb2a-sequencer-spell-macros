@@ -1,13 +1,13 @@
-let tokenD = canvas.tokens.get(args[0].tokenId);
+const casterId = canvas.tokens.get(args[0].tokenId);
 new Sequence()
     .effect()
         .file("jb2a.magic_signs.rune.conjuration.intro.green")
         .scale(0.3)
-        .atLocation(tokenD)
+        .atLocation(casterId)
     .effect()
         .file("jb2a.arrow.poison.green.02")
         .fadeIn(1000)
-        .atLocation(tokenD)
+        .atLocation(casterId)
         .reachTowards(args[0].targets[0])
         .missed(args[0].hitTargets.length === 0)
         .filter("Glow", { color: 0xb0bf1a })

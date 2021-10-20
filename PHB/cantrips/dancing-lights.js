@@ -1,4 +1,4 @@
-let tokenD = canvas.tokens.get(args[0].tokenId);
+const casterId = canvas.tokens.get(args[0].tokenId);
 
 let dancingLightCount = 1;
 let currentDancingLightCount = 0;
@@ -19,12 +19,12 @@ if (!createDancingLight) {
                         .effect()
                             .file("jb2a.magic_signs.rune.evocation.intro.pink")
                             .scale(0.3)
-                            .atLocation(tokenD)
+                            .atLocation(casterId)
                             .waitUntilFinished(-550)
                         .effect()
                             .file("jb2a.magic_signs.rune.evocation.loop.pink")
                             .scale(0.3)
-                            .atLocation(tokenD)
+                            .atLocation(casterId)
                             .fadeIn(100)
                             .fadeOut(100)
                             .waitUntilFinished(-550)
@@ -32,7 +32,7 @@ if (!createDancingLight) {
                         .effect()
                             .file("jb2a.magic_signs.rune.evocation.outro.pink")
                             .scale(0.3)
-                            .atLocation(tokenD)
+                            .atLocation(casterId)
                         .play();
                 }
             },
@@ -43,7 +43,7 @@ if (!createDancingLight) {
                     .effect()
                         .file("jb2a.energy_strands.range.standard.purple")
                         .gridSize(1)
-                        .atLocation(tokenD)
+                        .atLocation(casterId)
                         .reachTowards(location)
                         .missed(args[0].hitTargets.length === 0)
                         .filter("Glow", { color: 0xffffff})
@@ -55,7 +55,7 @@ if (!createDancingLight) {
                 }
             }
         }, {
-            controllingActor: tokenD.actor,
+            controllingActor: casterId.actor,
             collision: false,
         });
     }
