@@ -33,7 +33,7 @@ let arrayLength = game.user.targets.size;
             .fadeIn(100)
             .fadeOut(500)
             .duration(6000)
-            .scale(0.4)
+            .scale(0.4, 0.45)
             .atLocation(targetId)
             .randomRotation()
             .scaleIn(0, 500, {ease: "easeOutCubic"})
