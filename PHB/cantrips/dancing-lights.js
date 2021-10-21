@@ -1,10 +1,9 @@
-const casterToken = canvas.tokens.get(args[0]);
+const casterToken = canvas.tokens.controlled[0];
 if (!casterToken) {
 	ui.notifications.warn("Please select a valid token to use this ability.");
 	return;
 }
 
-const casterId = casterToken.tokenId;
 
 let dancingLightCount = 1;
 let currentDancingLightCount = 0;
@@ -25,12 +24,12 @@ if (!createDancingLight) {
                         .effect()
                             .file("jb2a.magic_signs.rune.evocation.intro.pink")
                             .scale(0.3)
-                            .atLocation(casterId)
+                            .atLocation(casterToken)
                             .waitUntilFinished(-550)
                         .effect()
                             .file("jb2a.magic_signs.rune.evocation.loop.pink")
                             .scale(0.3)
-                            .atLocation(casterId)
+                            .atLocation(casterToken)
                             .fadeIn(100)
                             .fadeOut(100)
                             .waitUntilFinished(-550)
@@ -38,7 +37,7 @@ if (!createDancingLight) {
                         .effect()
                             .file("jb2a.magic_signs.rune.evocation.outro.pink")
                             .scale(0.3)
-                            .atLocation(casterId)
+                            .atLocation(casterToken)
                         .play();
                 }
             },
@@ -49,7 +48,7 @@ if (!createDancingLight) {
                     .effect()
                         .file("jb2a.energy_strands.range.standard.purple")
                         .gridSize(1)
-                        .atLocation(casterId)
+                        .atLocation(casterToken)
                         .reachTowards(location)
                         .missed(args[0].hitTargets.length === 0)
                         .filter("Glow", { color: 0xffffff})
@@ -61,7 +60,7 @@ if (!createDancingLight) {
                 }
             }
         }, {
-            controllingActor: casterId.actor,
+            controllingActor: casterToken.actor,
             collision: false,
         });
     }
