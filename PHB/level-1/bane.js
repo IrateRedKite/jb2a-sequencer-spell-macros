@@ -35,6 +35,7 @@ let arrayLength = game.user.targets.size;
             .duration(6000)
             .scale(0.4)
             .atLocation(targetId)
+            .randomRotation()
             .scaleIn(0, 500, {ease: "easeOutCubic"})
     .play();
 }
