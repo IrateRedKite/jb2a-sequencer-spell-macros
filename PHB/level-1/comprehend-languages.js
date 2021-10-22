@@ -27,6 +27,6 @@ new Sequence()
         .atLocation(casterToken)
         .fadeIn(500)
         .fadeOut(500)
-        .duration(1500)
+        .duration(1000)
         .randomRotation() 
     .play();
