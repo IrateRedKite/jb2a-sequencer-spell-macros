@@ -3,17 +3,11 @@ if (!casterToken) {
 	ui.notifications.warn("Please select a valid token to use this ability.");
 	return;
 }
-const targetId = Array.from(game.user.targets)[0];
-if (!targetId) {
-	ui.notification.warn("This spell requires at least one valid target.");
-	return;
-}
+let targetID = canvas.tokens.get(args[1].tokenId);
 
-let myStringArray = Array.from(game.user.targets)[0];
-let arrayLength = game.user.targets.size;
+if(args[0] === "on"){
+    // If the dynamic active effect started
 
-    for (let i = 0; i < arrayLength; i++) {
-    let targetId = Array.from(game.user.targets)[i];
     new Sequence()
         .effect()
             .file("jb2a.extras.tmfx.runes.circle.outpulse.enchantment")
@@ -27,18 +21,30 @@ let arrayLength = game.user.targets.size;
             .opacity(0.5)
         .effect()
             .file("jb2a.extras.tmfx.outpulse.circle.01.slow")
-            .atLocation(targetId)
+            .atLocation(targetID)
             .fadeIn(500)
             .fadeOut(500)
             .filter("Glow", { color: 0xfefebe })
         .effect()
             .file("jb2a.bless.200px.intro.yellow")
+            .atLocation(targetID)
             .fadeIn(100)
-            .fadeOut(500)
-            .duration(6000)
-            .atLocation(targetId)
-            .randomRotation()
             .belowTokens()
             .scaleToObject(2)
+            .scaleIn(0, 500, {ease: "easeOutCubic"})
+            .waitUntilFinished(-500)
+        .effect()
+            .file("jb2a.bless.200px.loop.yellow")
+            .fadeOut(500)
+            .scaleToObject(2)
+            .attachTo(targetID)
+            .persist()
+            .belowTokens()
+            .name(`bless-${targetID.id}`)
     .play();
+
 }
+    if(args[0] === "off"){
+        // If the dynamic active effect ended
+        Sequencer.EffectManager.endEffects({ name: `bless-${targetID.id}`, object: targetID });
+    }    
