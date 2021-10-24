@@ -44,6 +44,3 @@ if (!targetId) {
             .belowTokens()
             .randomRotation()  
     .play();
-
-
-
