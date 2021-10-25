@@ -49,6 +49,5 @@ let arrayLength = game.user.targets.size;
             .scale(0.4, 0.55)
             .atLocation(targetId)
             .scaleIn(0, 500, {ease: "easeOutCubic"})
-
         .play();
 }
