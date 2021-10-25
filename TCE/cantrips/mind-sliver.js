@@ -37,6 +37,7 @@ if (!targetId) {
             .belowTokens()
             .waitUntilFinished(-500)        
         .effect()
+            .delay(500)
             .file("jb2a.impact.007.purple")
             .atLocation(targetId)
             .fadeIn(100)
@@ -49,5 +50,4 @@ if (!targetId) {
             .fadeOut(500)
             .duration(1500) 
             .opacity(0.5)
-            .belowTokens()
     .play();
