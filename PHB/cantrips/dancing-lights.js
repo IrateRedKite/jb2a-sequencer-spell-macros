@@ -49,7 +49,6 @@ if (!createDancingLight) {
                     .fadeOut(500)
                     .randomRotation()
                     .scale(0.5)
-                    .filter("Glow", { color: 0xa1c4fd })
                 .play();
 
 
