@@ -33,5 +33,3 @@ if (!targetId) {
             .fadeOut(500)
             .filter("Glow", { color: 0xc00000 })
     .play();
-
-

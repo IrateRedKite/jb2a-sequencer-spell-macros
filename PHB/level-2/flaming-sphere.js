@@ -38,5 +38,3 @@ await warpgate.spawn("Flaming Sphere", {}, {
 }, {
     collision: false
 });
-
-

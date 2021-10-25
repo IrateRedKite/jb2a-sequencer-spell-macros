@@ -52,4 +52,3 @@ let arrayLength = game.user.targets.size;
 
         .play();
 }
-

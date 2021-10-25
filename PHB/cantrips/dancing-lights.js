@@ -4,7 +4,6 @@ if (!casterToken) {
 	return;
 }
 
-
 let dancingLightCount = 1;
 let currentDancingLightCount = 0;
 let hasPlayedAnimation = false;
