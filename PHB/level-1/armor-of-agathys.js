@@ -31,7 +31,3 @@ new Sequence()
         .duration(1500) 
         .belowTokens()
     .play();
-
-
-
-    
