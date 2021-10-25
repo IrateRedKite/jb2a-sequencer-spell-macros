@@ -22,38 +22,36 @@ if (!createDancingLight) {
                     hasPlayedAnimation = true;
                     new Sequence()
                         .effect()
-                            .file("jb2a.magic_signs.rune.evocation.intro.pink")
-                            .scale(0.3)
+                            .file("jb2a.extras.tmfx.runes.circle.outpulse.evocation")
                             .atLocation(casterToken)
-                            .waitUntilFinished(-550)
+                            .duration(2000)
+                            .fadeIn(500)
+                            .fadeOut(500)
+                            .scale(0.5)
+                            .filter("Glow", { color: 0xffffbf })
+                            .scaleIn(0, 500, {ease: "easeOutCubic", delay: 100})
                         .effect()
-                            .file("jb2a.magic_signs.rune.evocation.loop.pink")
-                            .scale(0.3)
+                            .file("jb2a.moonbeam.01.intro.blue")
                             .atLocation(casterToken)
                             .fadeIn(100)
-                            .fadeOut(100)
-                            .waitUntilFinished(-550)
-                            .duration(1000)
-                        .effect()
-                            .file("jb2a.magic_signs.rune.evocation.outro.pink")
-                            .scale(0.3)
-                            .atLocation(casterToken)
-                        .play();
+                            .fadeOut(200)
+                            .duration(1200)
+                    .play();
                 }
             },
             post: async (location, spawnedToken, updates, iteration) => {
                 // When the token has been spawned
 
                 new Sequence()
-                    .effect()
-                        .file("jb2a.energy_strands.range.standard.purple")
-                        .gridSize(1)
-                        .atLocation(casterToken)
-                        .reachTowards(location)
-                        .missed(args[0].hitTargets.length === 0)
-                        .filter("Glow", { color: 0xffffff})
-                        .async()
-                        .play();
+                .effect()
+                    .file("jb2a.toll_the_dead.blue.shockwave")
+                    .atLocation(location)
+                    .fadeOut(500)
+                    .randomRotation()
+                    .scale(0.5)
+                    .filter("Glow", { color: 0xa1c4fd })
+                .play();
+
 
                 if (++currentDancingLightCount < dancingLightCount) {
                     await createDancingLight();
