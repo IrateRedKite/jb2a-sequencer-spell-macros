@@ -3,11 +3,6 @@ if (!casterToken) {
 	ui.notifications.warn("Please select a valid token to use this ability.");
 	return;
 }
-const targetId = Array.from(game.user.targets)[0];
-if (!targetId) {
-	ui.notification.warn("This spell requires at least one valid target.");
-	return;
-}
 
     new Sequence()
         .effect()
@@ -30,7 +25,7 @@ if (!targetId) {
             .filter("Glow", { color: 0x800080 })    
         .effect()
             .file("jb2a.moonbeam.01.intro.rainbow")
-            .atLocation(targetId)
+            .atLocation(casterToken)
             .fadeIn(100)
             .fadeOut(200)
             .duration(1200)
