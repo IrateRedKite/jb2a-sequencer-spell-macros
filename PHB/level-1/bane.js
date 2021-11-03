@@ -1,3 +1,5 @@
+//NOTE: This needs to go into the effect's macro.execute property, rather than midi's 'On Item Use' field.
+
 const casterToken = canvas.tokens.controlled[0];
 if (!casterToken) {
 	ui.notifications.warn("Please select a valid token to use this ability.");
