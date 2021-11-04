@@ -13,6 +13,41 @@ const spellName = "Dragon's Breath (Active)";
 const spellDC = casterToken.actor.data.data.attributes.spelldc;
 
 if(args[0] === "on"){
+
+	new Sequence()
+	.effect()
+		.file("jb2a.extras.tmfx.runes.circle.outpulse.tramnsmutation")
+		.atLocation(casterToken)
+		.duration(1000)
+		.fadeIn(300)
+		.fadeOut(500)
+		.scale(0.5)
+		.opacity(0.3)
+		.filter("Glow", { color: 0xffa500 })
+		.scaleIn(0, 500, {ease: "easeOutCubic", delay: 100})
+	.effect()
+		.file("jb2a.impact.004.orange")
+		.atLocation(casterToken)
+		.belowTokens()
+		.waitUntilFinished(-500)
+	.effect()
+		.file("jb2a.markers.light.intro.yellow")
+		.attachTo(targetId)
+		.scale(0.5)
+		.waitUntilFinished(-500)
+		.belowTokens()
+	.effect()
+		.file("jb2a.markers.light.loop.yellow")
+		.attachTo(targetId)
+		.scale(0.5)
+		.persist()
+		.name(`dragons-breath-${targetId.id}`)
+		.fadeIn(300)
+		.fadeOut(300)
+		.extraEndDuration(800)
+		.belowTokens()
+	.play()
+
     await targetId.actor.createOwnedItem({
 		name: spellName,
 		type: "spell",
@@ -55,4 +90,7 @@ if(args[0] === "off") {
 		return;
 
 	targetId.actor.deleteOwnedItem(item._id);
+
+	Sequencer.EffectManager.endEffects({ name: `dragons-breath-${targetId.id}`, object: targetId });
+
 }
