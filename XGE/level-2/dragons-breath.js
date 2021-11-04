@@ -21,16 +21,15 @@ if (args[0] === "on") {
 		content: `
 		<p>Please choose a damage type from the drop-down menu:</p>
 		<form>
-	
-		<div>
-		<select id="formDamageType">
-		<option value="acid" selected="selected">Acid</option>
-		<option value="cold">Cold</option>
-		<option value="fire">Fire</option>
-		<option value="lightning">Lightning</option>
-		<option value="poison">Poison</option>
-		</select>
-		</div>
+			<div>
+				<select id="formDamageType">
+					<option value="acid" selected="selected">Acid</option>
+					<option value="cold">Cold</option>
+					<option value="fire">Fire</option>
+					<option value="lightning">Lightning</option>
+					<option value="poison">Poison</option>
+				</select>
+			</div>
 		</form>
 		`,
 		buttons: {
@@ -45,14 +44,14 @@ if (args[0] === "on") {
 			}
 		},
 		default: "Cast",
-		
 	});
 	d.render(true);
-
-
 	const triggerEffect = async (damageType) => {
+		// Grabs spellLevel from args passed in at macro.execute
 		const spellLevel = args[args.length - 1].efData.flags.dae.itemData.data.level;
+		// Ensure that if the macro args were not passed in, the spell level is cast at the default
 		const upcastLevel = typeof args[1] === "number" ? args[1] : spellLevel;
+		// Calculates the number of dice to add
 		const dice = upcastLevel - spellLevel + 3;
 		// Create the cantrip on the target actor's sheet
 		await targetId.actor.createOwnedItem({
@@ -90,43 +89,40 @@ if (args[0] === "on") {
 		});
 		// Play the casting effect on the caster and the target
 		new Sequence()
-		.effect()
-			.file("jb2a.extras.tmfx.runes.circle.outpulse.tramnsmutation")
-			.atLocation(casterToken)
-			.duration(1000)
-			.fadeIn(300)
-			.fadeOut(500)
-			.scale(0.5)
-			.opacity(0.3)
-			.filter("Glow", {color: 0xffa500})
-			.scaleIn(0, 500, {ease: "easeOutCubic",delay: 100})
-		.effect()
-			.file("jb2a.impact.004.orange")
-			.atLocation(casterToken)
-			.belowTokens()
-			.waitUntilFinished(-500)
-		.effect()
-			.file("jb2a.markers.light.intro.yellow")
-			.attachTo(targetId)
-			.scale(0.5)
-			.waitUntilFinished(-500)
-			.belowTokens()
-		.effect()
-			.file("jb2a.markers.light.loop.yellow")
-			.attachTo(targetId)
-			.scale(0.5)
-			.persist()
-			.name(`dragons-breath-${targetId.id}`)
-			.fadeIn(300)
-			.fadeOut(300)
-			.extraEndDuration(800)
-			.belowTokens()
-
-			.play()
+			.effect()
+				.file("jb2a.extras.tmfx.runes.circle.outpulse.tramnsmutation")
+				.atLocation(casterToken)
+				.duration(1000)
+				.fadeIn(300)
+				.fadeOut(500)
+				.scale(0.5)
+				.opacity(0.3)
+				.filter("Glow", {color: 0xffa500})
+				.scaleIn(0, 500, {ease: "easeOutCubic",delay: 100})
+			.effect()
+				.file("jb2a.impact.004.orange")
+				.atLocation(casterToken)
+				.belowTokens()
+				.waitUntilFinished(-500)
+			.effect()
+				.file("jb2a.markers.light.intro.yellow")
+				.attachTo(targetId)
+				.scale(0.5)
+				.waitUntilFinished(-500)
+				.belowTokens()
+			.effect()
+				.file("jb2a.markers.light.loop.yellow")
+				.attachTo(targetId)
+				.scale(0.5)
+				.persist()
+				.name(`dragons-breath-${targetId.id}`)
+				.fadeIn(300)
+				.fadeOut(300)
+				.extraEndDuration(800)
+				.belowTokens()
+		.play()
 	};
-
 }
-
 // When the effect is toggled off:
 if (args[0] === "off") {
 	let item = targetId.actor.data.items.find(i => i.name === spellName);
@@ -139,5 +135,4 @@ if (args[0] === "off") {
 		name: `dragons-breath-${targetId.id}`,
 		object: targetId
 	});
-
 }
