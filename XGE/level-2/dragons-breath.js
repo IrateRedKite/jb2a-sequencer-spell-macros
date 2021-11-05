@@ -1,4 +1,3 @@
-console.log(args)
 // This needs to be placed in dae's macro.execute with the @spellLevel, @target and @token parameters in order to work correctly.
 //Get the caster and target token IDs
 const casterToken = canvas.scene.tokens.get(args[3]);
