@@ -1,14 +1,9 @@
-// This needs to be placed in dae's macro.execute with the @spellLevel parameter to work correctly.
-const casterToken = canvas.tokens.controlled[0];
-if (!casterToken) {
-	ui.notifications.warn("Please select a valid token to use this ability.");
-	return;
-}
-const targetId = Array.from(game.user.targets)[0];
-if (!targetId) {
-	ui.notification.warn("This spell requires at least one valid target.");
-	return;
-}
+console.log(args)
+// This needs to be placed in dae's macro.execute with the @spellLevel, @target and @token parameters in order to work correctly.
+//Get the caster and target token IDs
+const casterToken = canvas.scene.tokens.get(args[3]);
+const targetActor = canvas.scene.tokens.get(args[2]);
+
 // Set the name and DC of the cantrip to be created on the target
 const spellName = "Dragon's Breath (Active)";
 const spellDC = casterToken.actor.data.data.attributes.spelldc;
@@ -54,7 +49,7 @@ if (args[0] === "on") {
 		// Calculates the number of dice to add
 		const dice = upcastLevel - spellLevel + 3;
 		// Create the cantrip on the target actor's sheet
-		await targetId.actor.createOwnedItem({
+		const item = await targetActor.actor.createEmbeddedDocuments('Item', [{
 			name: spellName,
 			type: "spell",
 			img: "icons/creatures/abilities/dragon-fire-breath-orange.webp",
@@ -86,7 +81,12 @@ if (args[0] === "on") {
 				actionType: "save",
 				source: "XGE",
 			},
-		});
+			flags: {
+				"midi-qol": {
+					onUseMacroName: "dragons-breath-active-item",
+				}
+			}
+		}]);
 		// Play the casting effect on the caster and the target
 		new Sequence()
 			.effect()
@@ -106,16 +106,16 @@ if (args[0] === "on") {
 				.waitUntilFinished(-500)
 			.effect()
 				.file("jb2a.markers.light.intro.yellow")
-				.attachTo(targetId)
-				.scale(0.5)
+				.attachTo(targetActor)
+				.scaleToObject(1.5)
 				.waitUntilFinished(-500)
 				.belowTokens()
 			.effect()
 				.file("jb2a.markers.light.loop.yellow")
-				.attachTo(targetId)
+				.attachTo(targetActor)
 				.scale(0.5)
 				.persist()
-				.name(`dragons-breath-${targetId.id}`)
+				.name(`dragons-breath-${targetActor.id}`)
 				.fadeIn(300)
 				.fadeOut(300)
 				.extraEndDuration(800)
@@ -125,14 +125,15 @@ if (args[0] === "on") {
 }
 // When the effect is toggled off:
 if (args[0] === "off") {
-	let item = targetId.actor.data.items.find(i => i.name === spellName);
+	let item = targetActor.actor.data.items.find(i => i.name === spellName);
 	if (!item)
 		return;
 	// Remove the cantrip from the target's sheet when the effect ends
-	targetId.actor.deleteOwnedItem(item._id);
+	console.log(item)
+	targetActor.actor.deleteEmbeddedDocuments('Item', [item.id]);
 	// End the sequencer effect attached to the target
 	Sequencer.EffectManager.endEffects({
-		name: `dragons-breath-${targetId.id}`,
-		object: targetId
+		name: `dragons-breath-${targetActor.id}`,
+		object: targetActor.id
 	});
 }
