@@ -13,7 +13,7 @@ if (!casterToken) {
             .fadeOut(500)
             .scale(0.5)
             .filter("Glow", { color: 0x5b0a91 })
-            .waitUntilFinished(-500)
+           .waitUntilFinished(-500)
 
         .effect()
              .file("jb2a.markers.light.intro.blue")
