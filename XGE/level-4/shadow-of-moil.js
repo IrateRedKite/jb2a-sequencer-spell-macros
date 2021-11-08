@@ -16,8 +16,8 @@ new Sequence()
     .filter("Glow", { color: 0xffffff })
     .scaleIn(0, 500, { ease: "easeOutCubic", delay: 100 })
     .waitUntilFinished(-500)
-  
-    .effect()
+
+.effect()
     .fadeIn(500)
     .file("jb2a.energy_strands.complete.dark_red.01")
     .scale(0.4)
@@ -25,7 +25,7 @@ new Sequence()
     .persist()
     .name(`ShadowOfMoil_${casterToken.data._id}`)
 
-    .effect()
+.effect()
     .file("jb2a.fire_ring.500px.red")
     .atLocation(casterToken)
     .fadeIn(100)
@@ -34,5 +34,4 @@ new Sequence()
     .name(`FireRing_ShadowOfMoil_${casterToken.data._id}`)
     .persist()
 
-
-    .play();
+.play();
