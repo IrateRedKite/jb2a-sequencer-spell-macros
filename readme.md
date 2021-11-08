@@ -17,7 +17,7 @@ Most of these macros are meant to be used in the item 'On Use Macro' field that 
 
 ## Contributing
 
-If you want to contribute scripts to this repository, please feel free to submit a pull request! Ideally anything contributed should conform to the styles visible in the preview folders. Anything requiring additional dependencies not already, such as TMFX, won't be accepted. Script names should be all lowercase and use dashes in place of spaces.
+If you want to contribute scripts to this repository, please feel free to submit a pull request! Ideally anything contributed should conform to the styles visible in the preview folders. Anything requiring additional dependencies not already listed above, such as TMFX, won't be accepted. Script names should be all lowercase and use dashes in place of spaces.
 
 ## Credit
 
