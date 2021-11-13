@@ -1,15 +1,12 @@
-const casterToken = canvas.tokens.get(args[0].tokenId);
-if (!casterToken) {
-    ui.notifications.warn("Please select a valid token to use this ability.");
-    return;
-}
-const targetId = Array.from(game.user.targets)[0];
-if (!targetId) {
-	ui.notification.warn("This spell requires at least one valid target.");
-	return;
-}
+// This needs to be placed in dae's macro.execute with the @token and @target parameters in order to work correctly.
 
-new Sequence()
+const casterToken = canvas.scene.tokens.get(args[1]);
+const targetActor = canvas.scene.tokens.get(args[2]);
+
+if(args[0] === "on"){
+    // If the dynamic active effect started
+
+    new Sequence()
     .effect()
         .file("jb2a.static_electricity.02.blue")
         .scale(0.4)
@@ -19,7 +16,7 @@ new Sequence()
         .fadeOut(100)
     .effect()
         .file("jb2a.extras.tmfx.runes.circle.outpulse.evocation")
-        .atLocation(args[0].tokenId)
+        .atLocation(casterToken)
         .duration(2000)
         .fadeIn(500)
         .fadeOut(500)
@@ -30,16 +27,24 @@ new Sequence()
     .effect()
         .file("jb2a.rapier.melee.01.blue.1")
         .atLocation(casterToken)
-        .reachTowards(targetId)
-        .missed(args[0].hitTargets.length === 0)
+        .reachTowards(targetActor)
+        //.missed(args[0].hitTargets.length === 0)
         .waitUntilFinished(-1000)
         .fadeIn(500)
         .fadeOut(1500)
     .effect()
         .file("jb2a.static_electricity.01.blue")
         .scale(0.4)
-        .atLocation(targetId)
-        .duration(2000)
+        .attachTo(targetActor)
         .fadeIn(500)
         .fadeOut(1000)
-    .play()
+        .name(`booming-blade-${targetActor.id}`)
+        .persist()
+.play()
+
+}
+    if(args[0] === "off"){
+        // If the dynamic active effect ended
+        Sequencer.EffectManager.endEffects({ name: `booming-blade-${targetActor.id}`, object: targetActor.id });
+    }    
+
