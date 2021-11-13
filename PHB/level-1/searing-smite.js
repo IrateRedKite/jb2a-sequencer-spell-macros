@@ -1,54 +1,50 @@
-const casterToken = canvas.tokens.get(args[0].tokenId);
-if (!casterToken) {
-    ui.notifications.warn("Please select a valid token to use this ability.");
-    return;
-}
-const targetId = Array.from(game.user.targets)[0];
-if (!targetId) {
-	ui.notification.warn("This spell requires at least one valid target.");
-	return;
-}
+// This needs to be placed in dae's macro.execute with the @token and @target parameters in order to work correctly.
 
-new Sequence()
-    .effect()
-        .file("jb2a.extras.tmfx.runes.circle.outpulse.evocation")
-        .atLocation(args[0].tokenId)
-        .duration(2000)
-        .fadeIn(500)
-        .fadeOut(500)
-        .scale(0.5)
-        .waitUntilFinished(-1200)
-        .filter("Glow", { color: 0xffa500 })
-        .opacity(0.8)
-    .effect()
-        .file("jb2a.spear.melee.fire.orange")
-        .atLocation(casterToken)
-        .reachTowards(targetId)
-        .missed(args[0].hitTargets.length === 0)
-        .waitUntilFinished(-1200)
-        .fadeIn(500)
-        .fadeOut(1500)
-    .effect()
-        .from(targetId)
-        .duration(2500)
-        .fadeIn(500)
-        .fadeOut(500)
-        .atLocation(targetId)
-        .filter("Glow", { color: 0xFFA500 })
-        .scaleToObject()
-    .effect()
-        .file("jb2a.explosion.02.orange")
-        .atLocation(targetId)
-        .fadeIn(100)
-        .fadeOut(100)
-        .scale(0.5)
-    .effect()
-        .file("jb2a.flaming_sphere.orange")
-        .scaleToObject(2)
-        .belowTokens()
-        .atLocation(targetId)
-        .duration(2000)
-        .fadeIn(500)
-        .fadeOut(1000)
-    .play()
+const casterToken = canvas.scene.tokens.get(args[1]);
+const targetActor = canvas.scene.tokens.get(args[2]);
+
+if(args[0] === "on"){
+    // If the dynamic active effect started
+
+    new Sequence()
+.effect()
+    .file("jb2a.extras.tmfx.runes.circle.outpulse.evocation")
+    .atLocation(casterToken)
+    .duration(2000)
+    .fadeIn(500)
+    .fadeOut(500)
+    .scale(0.5)
+    .waitUntilFinished(-1200)
+    .filter("Glow", { color: 0xffa500 })
+    .opacity(0.8)
+.effect()
+    .file("jb2a.spear.melee.fire.orange")
+    .atLocation(casterToken)
+    .reachTowards(targetActor)
+    .waitUntilFinished(-1200)
+    .fadeIn(500)
+    .fadeOut(1500)
+.effect()
+    .file("jb2a.explosion.02.orange")
+    .atLocation(targetActor)
+    .fadeIn(100)
+    .fadeOut(100)
+    .scale(0.5)
+.effect()
+    .file("jb2a.flaming_sphere.orange")
+    .scaleToObject(2)
+    .belowTokens()
+    .attachTo(targetActor)
+    .duration(2000)
+    .fadeIn(500)
+    .fadeOut(1000)
+    .persist()
+    .name(`searing-smite-${targetActor.id}`)
+.play()
+
+}
+    if(args[0] === "off"){
+        // If the dynamic active effect ended
+        Sequencer.EffectManager.endEffects({ name: `searing-smite-${targetActor.id}`, object: targetActor.id });
+    }    
 
