@@ -1,6 +1,6 @@
 const template = canvas.templates.placeables[canvas.templates.placeables.length - 1];
-
-await template.delete();
+//uncomment the below line to remove the placed template after casting
+//await template.delete();
 
 new Sequence()
     .effect()
