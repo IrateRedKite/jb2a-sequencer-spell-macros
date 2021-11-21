@@ -24,7 +24,7 @@ if (!targetId) {
             .atLocation(targetId)
             .fadeIn(500)
         .effect()
-            .file("jb2a.static_electricity.01.blue")
+            .file("jb2a.static_electricity.01.red")
             .atLocation(targetId)
             .fadeIn(500)
             .duration(2000)
