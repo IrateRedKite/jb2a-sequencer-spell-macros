@@ -15,7 +15,7 @@ if (!casterToken) {
             .atLocation(casterToken)
             .scaleIn(0, 500, {ease: "easeOutCubic"})    
         .effect()
-            .file("jb2a.extras.tmfx.runes.circle.outpulse.tramnsmutation")
+            .file("jb2a.extras.tmfx.runes.circle.outpulse.transmutation")
             .atLocation(casterToken)
             .duration(4000)
             .fadeIn(500)

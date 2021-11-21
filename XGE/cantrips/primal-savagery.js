@@ -18,7 +18,7 @@ if (!targetId) {
             .duration(4000)  
             .scale(0.8) 
         .effect()
-            .file("jb2a.extras.tmfx.runes.circle.outpulse.tramnsmutation")
+            .file("jb2a.extras.tmfx.runes.circle.outpulse.transmutation")
             .atLocation(casterToken)
             .duration(4000)
             .fadeIn(500)

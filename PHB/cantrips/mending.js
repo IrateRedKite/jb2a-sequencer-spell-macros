@@ -6,7 +6,7 @@ if (!casterToken) {
 
 new Sequence()
     .effect()
-        .file("jb2a.extras.tmfx.runes.circle.inpulse.tramnsmutation")
+        .file("jb2a.extras.tmfx.runes.circle.inpulse.transmutation")
         .atLocation(casterToken)
         .duration(1700)
         .fadeIn(500)

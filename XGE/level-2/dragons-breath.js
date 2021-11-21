@@ -89,7 +89,7 @@ if (args[0] === "on") {
 		// Play the casting effect on the caster and the target
 		new Sequence()
 			.effect()
-				.file("jb2a.extras.tmfx.runes.circle.outpulse.tramnsmutation")
+				.file("jb2a.extras.tmfx.runes.circle.outpulse.transmutation")
 				.atLocation(casterToken)
 				.duration(1000)
 				.fadeIn(300)

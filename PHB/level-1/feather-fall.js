@@ -22,7 +22,7 @@ let arrayLength = game.user.targets.size;
             .fadeOut(500)
             .duration(1200) 
         .effect()
-            .file("jb2a.extras.tmfx.runes.circle.outpulse.tramnsmutation")
+            .file("jb2a.extras.tmfx.runes.circle.outpulse.transmutation")
             .atLocation(casterToken)
             .duration(2000)
             .fadeIn(500)
