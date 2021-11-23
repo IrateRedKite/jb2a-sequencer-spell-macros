@@ -1,3 +1,4 @@
+//Preloading the Files to make sure they play a bit nicer when animatiing.
 Sequencer.Preloader.preloadForClients(
     "jb2a.fireball.beam.orange",
     "jb2a.fireball.explosion.orange",
@@ -8,14 +9,11 @@ if (!casterToken) {
     ui.notifications.warn("Please select a valid token to use this ability.");
     return;
 }
-
+//get the template id from the canvas and its positions.
 let fireTemplate = canvas.templates.get(args[0].templateId);
 let templatePosition = fireTemplate.position;
-//MidiQOL.selectTargetsForTemplate(fireTemplate);
-
-
+//get an array of the targets within the tempalte area.
 const targetLocations = Array.from(game.user.targets);
-//let targetLocations = Array.from(game.user.targets)[0];
 
 await fireTemplate.delete();
 
@@ -42,6 +40,7 @@ sequence.effect()
     .atLocation(templatePosition)
     .waitUntilFinished(-2100)
 
+//blast mark from the forgotten adventures site, you need to find your own blast mark or use the agreed one by JB2A and FA
 sequence.effect()
     .file("misc/Blast_Mark_A2_2x2.png")
     .atLocation(templatePosition)
@@ -53,7 +52,7 @@ sequence.effect()
     .fadeOut(350)
     .belowTokens()
 
-
+//blast mark from the forgotten adventures site, you need to find your own blast mark or use the agreed one by JB2A and FA
 sequence.effect()
     .file("misc/Blast_Mark_A2_2x2.png")
     .atLocation(templatePosition)
@@ -63,6 +62,7 @@ sequence.effect()
     .fadeOut(2000)
     .belowTokens()
 
+//loop through targets and play only if failed save (to do)
 for (let targetLoc of targetLocations) {
     sequence.effect()
         .file("jb2a.flames.01.orange")
