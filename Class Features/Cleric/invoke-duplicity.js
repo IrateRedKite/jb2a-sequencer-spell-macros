@@ -4,16 +4,17 @@ if (!casterToken) {
 	return;
 }
 
-new Sequence()
-    .effect()
-        .file("jb2a.extras.tmfx.runes.circle.inpulse.abjuration")
+await warpgate.spawn("Illusory Duplicate", {}, {
+    pre: async (location) => {
+        const seq = new Sequence()
+        .effect()
+        .file("jb2a.sneak_attack.blue")
         .atLocation(casterToken)
-        .duration(2000)
         .fadeIn(500)
         .fadeOut(500)
         .scale(0.5)
         .opacity(0.3)
-        .filter("Glow", { color: 0xffffff })
+        .filter("Glow", { color: 0xa1c4fd })
         .scaleIn(0, 500, {ease: "easeOutCubic", delay: 100})
     .effect()
         .file("jb2a.moonbeam.01.intro.blue")
@@ -23,11 +24,19 @@ new Sequence()
         .duration(1200)
         .waitUntilFinished(-500)
     .effect()
-        .file("jb2a.ice_spikes.radial.burst.white")
-        .scale(0.45)
-        .atLocation(casterToken)
+        .file("jb2a.toll_the_dead.blue.shockwave")
+        .atLocation(location)
         .fadeIn(500)
         .fadeOut(500)
-        .duration(1500) 
-        .belowTokens()
-    .play();
+        .scale(0.5)
+        .scaleIn(0, 500, {ease: "easeOutCubic", delay: 100})
+        .filter("Glow", { color: 0xa1c4fd })
+
+    seq.play();
+
+        // Sleep for 500ms
+        await (new Promise(resolve => setTimeout(resolve, 1200)));
+    }
+}, {
+    collision: false
+});

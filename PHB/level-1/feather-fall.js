@@ -1,4 +1,4 @@
-const casterToken = canvas.tokens.controlled[0];
+const casterToken = canvas.tokens.get(args[0].tokenId);
 if (!casterToken) {
 	ui.notifications.warn("Please select a valid token to use this ability.");
 	return;
@@ -22,7 +22,7 @@ let arrayLength = game.user.targets.size;
             .fadeOut(500)
             .duration(1200) 
         .effect()
-            .file("jb2a.extras.tmfx.runes.circle.outpulse.tramnsmutation")
+            .file("jb2a.extras.tmfx.runes.circle.outpulse.transmutation")
             .atLocation(casterToken)
             .duration(2000)
             .fadeIn(500)
