@@ -1,5 +1,3 @@
-//Requires MIDI-QoL if you want the animation to play only on hit. 
-
 const casterToken = canvas.tokens.get(args[0].tokenId);
 
 if (!casterToken) {
@@ -25,9 +23,11 @@ new Sequence()
     .fadeIn(500)
     .fadeOut(500)
     .scale(0.5)
-    .effect()
+
+.effect()
     .file("jb2a.eldritch_blast.dark_red")
     .atLocation(casterToken)
     .reachTowards(target)
     .playIf(args[0].hitTargets.length === 1) // Comment this line out if not using MIDI
-    .play();
+
+.play();
