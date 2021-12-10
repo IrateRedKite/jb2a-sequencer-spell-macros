@@ -11,30 +11,38 @@ let targetHit = args[0].hitTargets.length === 1;
 new Sequence()
 
 .effect()
-    .file("jb2a.shortsword.melee.01.white.4")
+    .file("jb2a.scimitar.melee.01.purple")
     .atLocation(casterToken)
     .reachTowards(target)
-    .filter("Glow", { color: 0x0047AB })
     .waitUntilFinished(-500)
     .missed()
-
+/*
 .effect()
     .from(target)
     .duration(1500)
     .fadeIn(500)
     .fadeOut(500)
     .atLocation(target)
-    .filter("Glow", { color: 0x0047AB })
-    .waitUntilFinished(-500)
+    .filter("Glow", { color: 0xFFC300 })
+  
+    .playIf(targetHit)*/
+
+    .effect()
+    .file("jb2a.impact.004.pinkpurple")
+    .atLocation(target)
+   
+    .fadeIn(500)
+    .fadeOut(300)
+    
     .playIf(targetHit)
 
 .effect()
-    .file("jb2a.markers.snowflake.dark_blue.02")
+    .file("jb2a.markers.01.purplepink")
     .atLocation(target)
     .duration(1500)
     .fadeIn(500)
     .fadeOut(300)
-    .waitUntilFinished(-1500)
+    
     .playIf(targetHit)
 
 .play()
