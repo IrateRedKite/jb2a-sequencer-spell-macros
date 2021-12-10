@@ -1,5 +1,5 @@
 Sequencer.Preloader.preloadForClients(
-    "autoanimations.range.firebolt.01.blue",
+    "jb2a.fire_bolt.blue",
     "jb2a.extras.tmfx.inflow.circle.02",
     "jb2a.magic_signs.circle.02.evocation.intro.blue",
     "jb2a.ice_spikes.radial.burst.blue")
@@ -33,7 +33,6 @@ new Sequence()
     .atLocation(tokenD)
     .startTime(350)
     .reachTowards(templatePosition)
-    .JB2A()
     .waitUntilFinished(-1000)
 
 
@@ -59,15 +58,13 @@ new Sequence()
 .effect()
     .file("jb2a.ice_spikes.radial.burst.blue")
     .atLocation(templatePosition)
-    .JB2A()
-    .scale(2.5)
+    .scale(1.5)
     .wait(150)
 
 .effect()
     .file("jb2a.sleet_storm.blue")
     .atLocation(templatePosition)
-    .JB2A()
-    .scale(2)
+    .scale(1)
     .fadeIn(300)
     .scaleIn(0, 300, { ease: "easeOutSine" })
     .persist()
