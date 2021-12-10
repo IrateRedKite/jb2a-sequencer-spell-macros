@@ -12,11 +12,11 @@ let targetSave = args[0].saves.length === 1;
 new Sequence()
 
 .effect()
-    .file("jb2a.extras.tmfx.inpulse.circle.03.fast")
+    .file("jb2a.extras.tmfx.inpulse.circle.03")
     .atLocation(casterToken)
     .filter("Glow", { color: 0xFFC300 })
     .duration(2000)
-    .scale(2)
+    .scale(1)
     .belowTokens()
     .waitUntilFinished(-500)
 
@@ -26,7 +26,7 @@ new Sequence()
     .duration(2500)
     .fadeIn(500)
     .fadeOut(300)
-    .scaleToObject()
+    .scale(1)
     .waitUntilFinished(-500)
 
 .effect()
