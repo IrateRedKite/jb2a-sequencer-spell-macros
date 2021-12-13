@@ -30,4 +30,14 @@ new Sequence()
     .reachTowards(target)
     .playIf(args[0].hitTargets.length === 1) // Comment this line out if not using MIDI
 
+.effect()
+    .file("jb2a.static_electricity.02.red")
+    .atLocation(target)
+    .fadeIn(500)
+    .fadeOut(500)
+    .scaleToObject()
+    .delay(1000)
+    .playIf(args[0].hitTargets.length === 1)
+
+
 .play();
