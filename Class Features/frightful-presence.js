@@ -7,7 +7,8 @@ if (!casterToken) {
 
 let target = Array.from(game.user.targets)[0];
 
-let targetSave = args[0].saves.length === 1;
+//To do - checking for if target saves or not.
+//let targetSave = args[0].saves.length === 1;
 
 new Sequence()
 
@@ -44,6 +45,6 @@ new Sequence()
     .fadeOut(500)
     .atLocation(target)
     .persist()
-    .playIf(targetSave)
+    //   .playIf(targetSave)
 
 .play()
