@@ -1,5 +1,6 @@
 
 //NOTE: This needs to go into the effect's macro.execute property, rather than midi's 'On Item Use' field. The parameters @target and @token need to be passed in (In this order)
+//This needs sequencer 1.20 RC5 or later to work! There's a delta time bug that will cause the images to spiral out of control that's fixed in this release.
 const casterToken = canvas.tokens.get(args[2]);
 if (!casterToken) {
     ui.notifications.warn("Please select a valid token to use this ability.");
@@ -59,6 +60,9 @@ if (args[0] === "on") {
             ease: "easeOutCubic"
         })
         .waitUntilFinished(-1000);
+    seq.animation()
+        .on(casterToken)
+        .fadeOut(1000)
     seq.effect()
         .file(targetImg)
         .fadeIn(1000)
@@ -134,4 +138,10 @@ if (args[0] === "off") {
         name: `mirror-image-3-${target.id}`,
         object: target.id
     });
+
+    const seq = new Sequence();
+    seq.animation()
+        .on(casterToken)
+        .fadeIn(1000)
+    .play
 }
