@@ -1,3 +1,8 @@
+await Sequencer.Preloader.preloadForClients(
+    "jb2a.energy_strands.complete.dark_red.01",
+    "jb2a.darkness.black",
+    "jb2a.fire_ring.500px.red")
+
 const casterToken = canvas.tokens.get(args[0].tokenId);
 if (!casterToken) {
     ui.notifications.warn("Please select a valid token to use this ability.");

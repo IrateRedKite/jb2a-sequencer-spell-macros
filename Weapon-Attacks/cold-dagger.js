@@ -1,3 +1,7 @@
+await Sequencer.Preloader.preloadForClients(
+    "jb2a.ice_spikes.radial.burst.blue",
+    "jb2a.shortsword.melee.01.white.4")
+
 //This uses MIDI QOL to check for Hits before playing certain parts
 const casterToken = canvas.tokens.get(args[0].tokenId);
 if (!casterToken) {

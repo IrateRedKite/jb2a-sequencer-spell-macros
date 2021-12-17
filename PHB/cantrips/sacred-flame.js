@@ -1,3 +1,8 @@
+await Sequencer.Preloader.preloadForClients(
+    "jb2a.disintegrate.orangepink",
+    "jb2a.flames.01.orange")
+
+
 const casterToken = canvas.tokens.get(args[0].tokenId);
 if (!casterToken) {
     ui.notifications.warn("Please select a valid token to use this ability.");

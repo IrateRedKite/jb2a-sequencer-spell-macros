@@ -1,3 +1,8 @@
+await Sequencer.Preloader.preloadForClients(
+    "jb2a.energy_strands.complete.dark_red.01",
+    "jb2a.eldritch_blast.dark_red")
+
+
 const casterToken = canvas.tokens.get(args[0].tokenId);
 
 if (!casterToken) {
@@ -35,8 +40,8 @@ new Sequence()
     .atLocation(target)
     .fadeIn(500)
     .fadeOut(500)
-    .scaleToObject()
     .delay(1000)
+    .scaleToObject()
     .playIf(args[0].hitTargets.length === 1)
 
 
