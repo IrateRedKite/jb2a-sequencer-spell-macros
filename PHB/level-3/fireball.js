@@ -40,17 +40,27 @@ sequence.effect()
     .atLocation(templatePosition)
     .waitUntilFinished(-2100)
 
+
 //blast mark from the forgotten adventures site, you need to find your own blast mark or use the agreed one by JB2A and FA
 sequence.effect()
     .file("misc/Blast_Mark_A2_2x2.png")
     .atLocation(templatePosition)
-    .scale(2.5)
+    .scale(2)
     .fadeIn(300)
-    .scaleIn(0, 300, { ease: "easeOutSine" })
-    .duration(3000)
-    .filter("Glow", { color: 0xff8c00 })
-    .fadeOut(350)
+    .duration(10000)
+    .fadeOut(500)
     .belowTokens()
+
+
+for (let targetLoc of targetLocations) {
+    sequence.effect()
+        .from(targetLoc)
+        .duration(2500)
+        .fadeIn(500)
+        .fadeOut(500)
+        .atLocation(targetLoc)
+        .filter("Glow", { color: 0xFFA500 })
+}
 
 //loop through targets and play only if failed save (to do)
 for (let targetLoc of targetLocations) {
@@ -61,6 +71,7 @@ for (let targetLoc of targetLocations) {
         .fadeIn(500)
         .fadeOut(500)
         .duration(2000)
+
 
 }
 
