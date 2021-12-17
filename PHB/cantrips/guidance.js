@@ -3,12 +3,6 @@ if (!casterToken) {
 	ui.notifications.warn("Please select a valid token to use this ability.");
 	return;
 }
-const targetId = Array.from(game.user.targets)[0];
-if (!targetId) {
-	ui.notification.warn("This spell requires at least one valid target.");
-	return;
-}
-
 new Sequence()
     .effect()
         .file("jb2a.extras.tmfx.runes.circle.inpulse.divination")
@@ -28,14 +22,14 @@ new Sequence()
         .waitUntilFinished(-500)
     .effect()
         .file("jb2a.extras.tmfx.outpulse.circle.01.slow")
-        .atLocation(targetId)
+        .atLocation(casterToken)
         .fadeIn(500)
         .fadeOut(500)
         .filter("Glow", { color: 0xffffbf })
         .opacity(0.8)
     .effect()
         .file("jb2a.bless.200px.intro.yellow")
-        .atLocation(targetId)
+        .atLocation(casterToken)
         .fadeIn(500)
         .fadeOut(500)
         .belowTokens()
