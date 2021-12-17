@@ -1,8 +1,8 @@
 //Preloading the Files to make sure they play a bit nicer when animatiing.
-Sequencer.Preloader.preloadForClients(
-    "jb2a.fireball.beam.orange",
-    "jb2a.fireball.explosion.orange",
-    "jb2a.flames.01.orange")
+await Sequencer.Preloader.preloadForClients(
+    "jb2a.fireball.beam.purple",
+    "jb2a.fireball.explosion.purple",
+    "jb2a.flames.01.purple")
 
 const casterToken = canvas.tokens.get(args[0].tokenId);
 if (!casterToken) {
@@ -26,17 +26,17 @@ sequence.effect()
     .fadeIn(500)
     .fadeOut(500)
     .scale(0.5)
-    .filter("Glow", { color: 0x7393B3 })
+    .filter("Glow", { color: 0x6a0dad })
     .waitUntilFinished(-500)
 
 sequence.effect()
-    .file("jb2a.fireball.beam.orange")
+    .file("jb2a.fireball.beam.purple")
     .atLocation(casterToken)
     .reachTowards(templatePosition)
     .waitUntilFinished(-1000)
 
 sequence.effect()
-    .file("jb2a.fireball.explosion.orange")
+    .file("jb2a.fireball.explosion.purple")
     .atLocation(templatePosition)
     .waitUntilFinished(-2100)
 
@@ -52,21 +52,11 @@ sequence.effect()
     .fadeOut(350)
     .belowTokens()
 
-//blast mark from the forgotten adventures site, you need to find your own blast mark or use the agreed one by JB2A and FA
-sequence.effect()
-    .file("misc/Blast_Mark_A2_2x2.png")
-    .atLocation(templatePosition)
-    .scale(2.5)
-    .fadeIn(300)
-    .duration(10000)
-    .fadeOut(2000)
-    .belowTokens()
-
 //loop through targets and play only if failed save (to do)
 for (let targetLoc of targetLocations) {
     sequence.effect()
-        .file("jb2a.flames.01.orange")
-        .filter("Glow", { color: 0xffa700 })
+        .file("jb2a.flames.01.purple")
+        .filter("Glow", { color: 0x6a0dad })
         .atLocation(targetLoc)
         .fadeIn(500)
         .fadeOut(500)

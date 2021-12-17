@@ -12,6 +12,9 @@ let target = Array.from(game.user.targets)[0];
 
 new Sequence()
 
+.sound()
+    .file("/worlds/doip/sounds/dragonroar.mp3")
+
 .effect()
     .file("jb2a.extras.tmfx.inpulse.circle.03")
     .atLocation(casterToken)
