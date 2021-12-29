@@ -1,3 +1,4 @@
+const template = canvas.templates.placeables[canvas.templates.placeables.length-1];
 const casterToken = canvas.tokens.get(args[0].tokenId);
 if (!casterToken) {
     ui.notifications.warn("Please select a valid token to use this ability.");
@@ -16,11 +17,11 @@ if (!casterToken) {
            .waitUntilFinished(-500)
 
         .effect()
-             .file("jb2a.markers.light.intro.blue")
-              .duration(1500)
+            .file("jb2a.markers.light.intro.blue")
+            .duration(1500)
             .fadeIn(500)
-             .fadeOut(500)
-             .scale(0.7)
+            .fadeOut(500)
+            .scale(0.7)
 
         .effect()
             .file("jb2a.extras.tmfx.border.circle.outpulse.01.normal")
@@ -34,3 +35,5 @@ if (!casterToken) {
             .persist()
 
     .play();
+
+    canvas.scene.deleteEmbeddedDocuments("MeasuredTemplate", [template.data._id]);
