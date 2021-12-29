@@ -15,7 +15,7 @@ let tokenD = canvas.tokens.get(args[0].tokenId);
 
 let templatePosition = iceTemplate.position;
 
-await iceTemplate.delete();
+await iceTemplate.document.delete();
 
 new Sequence()
     .effect()

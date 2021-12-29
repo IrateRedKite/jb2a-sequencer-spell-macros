@@ -15,7 +15,7 @@ let templatePosition = fireTemplate.position;
 //get an array of the targets within the tempalte area.
 const targetLocations = Array.from(game.user.targets);
 
-await fireTemplate.delete();
+await fireTemplate.document.delete();
 
 let sequence = new Sequence()
 
@@ -59,11 +59,8 @@ for (let targetLoc of targetLocations) {
         .fadeIn(500)
         .fadeOut(500)
         .atLocation(targetLoc)
-        .filter("Glow", { color: 0xFFA500 })
-}
+        .filter("Glow", { color: 0x6a0dad })
 
-//loop through targets and play only if failed save (to do)
-for (let targetLoc of targetLocations) {
     sequence.effect()
         .file("jb2a.flames.01.purple")
         .filter("Glow", { color: 0x6a0dad })
@@ -71,8 +68,8 @@ for (let targetLoc of targetLocations) {
         .fadeIn(500)
         .fadeOut(500)
         .duration(2000)
-
-
 }
+
+
 
 sequence.play()
