@@ -1,4 +1,4 @@
-Sequencer.Preloader.preloadForClients(
+await Sequencer.Preloader.preloadForClients(
     "jb2a.fire_bolt.blue",
     "jb2a.extras.tmfx.inflow.circle.02",
     "jb2a.magic_signs.circle.02.evocation.intro.blue",
@@ -15,7 +15,7 @@ let tokenD = canvas.tokens.get(args[0].tokenId);
 
 let templatePosition = iceTemplate.position;
 
-await iceTemplate.delete();
+await iceTemplate.document.delete();
 
 new Sequence()
     .effect()

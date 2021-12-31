@@ -1,3 +1,8 @@
+await Sequencer.Preloader.preloadForClients(
+    "jb2a.glaive.melee.01.orange",
+    "jb2a.flames.01.orange")
+
+//This uses MIDI QOL to check for Hits before playing certain parts
 const casterToken = canvas.tokens.get(args[0].tokenId);
 if (!casterToken) {
     ui.notifications.warn("Please select a valid token to use this ability.");
@@ -5,7 +10,7 @@ if (!casterToken) {
 }
 
 let target = canvas.tokens.get(args[0].targets[0].id);
-
+//midi checking for hit.
 let targetHit = args[0].hitTargets.length === 1;
 
 new Sequence()
@@ -16,7 +21,6 @@ new Sequence()
     .reachTowards(target)
     .filter("Glow", { color: 0xFFC300 })
     .waitUntilFinished(-500)
-    .missed()
 
 .effect()
     .from(target)
@@ -25,7 +29,6 @@ new Sequence()
     .fadeOut(500)
     .atLocation(target)
     .filter("Glow", { color: 0xFFC300 })
-  
     .playIf(targetHit)
 
 .effect()
@@ -34,7 +37,6 @@ new Sequence()
     .duration(1500)
     .fadeIn(500)
     .fadeOut(300)
-    
     .playIf(targetHit)
 
 .play()
