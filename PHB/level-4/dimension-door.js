@@ -1,6 +1,12 @@
 // requires JB2A, Sequencer, and Warpgate
 //Credit to david (aka claudekennilol) for initial Pathfinder version and Tupsi for initial 5e version
 
+Sequencer.Preloader.preloadForClients(
+    "jb2a.magic_signs.circle.02.conjuration.intro.red",
+    "jb2a.portals.vertical.vortex.red",
+    "jb2a.magic_signs.circle.02.conjuration.intro.blue",
+    "jb2a.portals.vertical.vortex.blue")
+
 let tokenD = canvas.tokens.get(args[0].tokenId);
 
 if (!tokenD) {
@@ -51,15 +57,18 @@ introSequence.effect()
     .duration(1500)
     .fadeIn(200)
     .fadeOut(500);
+
 introSequence.animation()
     .on(tokenD)
     .opacity(0);
+
 introSequence.effect()
     .from(tokenD)
     .moveTowards({ x: tokenD.center.x, y: tokenD.center.y - tokenD.h })
     .zeroSpriteRotation()
     .fadeOut(500)
     .duration(500);
+
 introSequence.wait(250);
 
 const outroSequence = new Sequence();
@@ -74,7 +83,6 @@ outroSequence.effect()
     .belowTokens()
     .waitUntilFinished(-1000);
 
-
 outroSequence.effect()
     .file('jb2a.portals.vertical.vortex.blue')
     .atLocation(position)
@@ -83,6 +91,7 @@ outroSequence.effect()
     .duration(1200)
     .fadeOut(500)
     .fadeIn(200);
+
 outroSequence.effect()
     .from(tokenD)
     .atLocation({ x: position.x, y: position.y - tokenD.h })
@@ -91,6 +100,7 @@ outroSequence.effect()
     .moveTowards(position)
     .zeroSpriteRotation()
     .waitUntilFinished();
+
 outroSequence.animation()
     .on(tokenD)
     .teleportTo(position, { relativeToCenter: true })

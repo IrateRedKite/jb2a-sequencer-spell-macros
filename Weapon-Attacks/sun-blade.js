@@ -4,17 +4,18 @@ if (!casterToken) {
     return;
 }
 
-let target = canvas.tokens.get(args[0].targets[0].id);
+let target = Array.from(game.user.targets)[0];
 //let targetImg = Array.from(game.user.targets)[0].data.img;
 
 new Sequence()
 
 .effect()
-    .file("jb2a.shortsword.melee.01.white.4")
+    .file("jb2a.sword.melee.01.white")
     .atLocation(casterToken)
     .reachTowards(target)
     .filter("Glow", { color: 0xffa700 })
     .waitUntilFinished(-500)
+    .size(canvas.grid.size * 2)
 
 .effect()
     .from(target)

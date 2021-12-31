@@ -1,7 +1,4 @@
-await Sequencer.Preloader.preloadForClients(
-    "jb2a.disintegrate.orangepink",
-    "jb2a.flames.01.orange")
-
+//This is for a homebrew item which on hit deals damage back to the attacker
 
 const casterToken = canvas.tokens.get(args[0].tokenId);
 if (!casterToken) {
@@ -13,22 +10,6 @@ let target = canvas.tokens.get(args[0].targets[0].id);
 //let targetImg = Array.from(game.user.targets)[0].data.img;
 
 new Sequence()
-
-.effect()
-    .file("jb2a.extras.tmfx.runes.circle.inpulse.evocation")
-    .atLocation(casterToken)
-    .duration(2000)
-    .fadeIn(500)
-    .fadeOut(500)
-    .scale(0.5)
-    .filter("Glow", { color: 0xFFA500 })
-    .waitUntilFinished(-500)
-
-.effect()
-    .file("jb2a.disintegrate.orangepink")
-    .atLocation({ x: target.center.x, y: target.center.y - (canvas.grid.size * 2) })
-    .reachTowards(target)
-    .waitUntilFinished(-500)
 
 .effect()
     .from(target)
