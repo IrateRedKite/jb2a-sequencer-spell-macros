@@ -1,6 +1,7 @@
 await Sequencer.Preloader.preloadForClients(
     "jb2a.ice_spikes.radial.burst.blue",
-    "jb2a.shortsword.melee.01.white.4")
+    "jb2a.dagger.melee.02.blue",
+    "jb2a.side_impact.ice_shard.blue")
 
 //This uses MIDI QOL to check for Hits before playing certain parts
 const casterToken = canvas.tokens.get(args[0].tokenId);
@@ -16,29 +17,29 @@ let targetHit = args[0].hitTargets.length === 1;
 new Sequence()
 
 .effect()
-    .file("jb2a.shortsword.melee.01.white.4")
+    .file("jb2a.dagger.melee.02.blue")
     .atLocation(casterToken)
     .reachTowards(target)
     .filter("Glow", { color: 0x0047AB })
-    .waitUntilFinished(-500)
-
-.effect()
-    .from(target)
-    .duration(1500)
-    .fadeIn(500)
-    .fadeOut(500)
-    .atLocation(target)
-    .filter("Glow", { color: 0x0047AB })
-    .waitUntilFinished(-2500)
-    .playIf(targetHit)
+    .waitUntilFinished(-1500)
+    .missed(args[0].hitTargets.length === 0)
 
 .effect()
     .file("jb2a.ice_spikes.radial.burst.blue")
     .atLocation(target)
     .scaleToObject()
-    .randomOffset(0.5)
     .fadeIn(500)
     .fadeOut(300)
     .playIf(targetHit)
+
+
+.effect()
+    .file("jb2a.side_impact.ice_shard.blue")
+    .atLocation(target)
+    .rotateTowards(target)
+    .reachTowards(casterToken)
+    .rotate(180)
+
+.playIf(targetHit)
 
 .play()
