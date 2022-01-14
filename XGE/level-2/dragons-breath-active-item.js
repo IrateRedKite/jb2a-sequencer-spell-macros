@@ -1,4 +1,4 @@
-const template = canvas.templates.placeables[canvas.templates.placeables.length-1];
+const template = canvas.templates.placeables[canvas.templates.placeables.length - 1];
 let damageType = args[0].item.data.damage.parts[0][1]
 let damageVisualEffect;
 
@@ -25,9 +25,9 @@ switch (damageType) {
 
 new Sequence()
     .effect()
-        .file(damageVisualEffect)
-        .atLocation(template, { cacheLocation: true })
-        .reachTowards(template, { cacheLocation: true })      
-.play();
+    .file(damageVisualEffect)
+    .atLocation(template, { cacheLocation: true })
+    .stretchTo(template, { cacheLocation: true })
+    .play();
 
 canvas.scene.deleteEmbeddedDocuments("MeasuredTemplate", [template.data._id]);

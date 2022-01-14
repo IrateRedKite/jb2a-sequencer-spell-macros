@@ -27,7 +27,7 @@ new Sequence()
 .effect()
     .file("jb2a.disintegrate.orangepink")
     .atLocation({ x: target.center.x, y: target.center.y - (canvas.grid.size * 2) })
-    .reachTowards(target)
+    .stretchTo(target)
     .waitUntilFinished(-500)
 
 .effect()

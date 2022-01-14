@@ -32,7 +32,7 @@ sequence.effect()
 sequence.effect()
     .file("jb2a.fireball.beam.purple")
     .atLocation(casterToken)
-    .reachTowards(templatePosition)
+    .stretchTo(templatePosition)
     .waitUntilFinished(-1000)
 
 sequence.effect()
