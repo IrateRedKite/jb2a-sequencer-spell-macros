@@ -32,7 +32,7 @@ new Sequence()
 .effect()
     .file("jb2a.eldritch_blast.dark_red")
     .atLocation(casterToken)
-    .reachTowards(target)
+    .stretchTo(target)
     .playIf(args[0].hitTargets.length === 1) // Comment this line out if not using MIDI
 
 .effect()
