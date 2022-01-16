@@ -27,6 +27,6 @@ new Sequence()
     .repeats(Math.max(1, Math.floor(damageTotal / 2)), 100, 200)
     .randomizeMirrorY()
     .atLocation(target)
-    .reachTowards(casterToken)
+    .stretchTo(casterToken)
     .playIf(args[0].hitTargets.length === 1) // Comment this line out if not using MIDI
- .play();
+    .play();

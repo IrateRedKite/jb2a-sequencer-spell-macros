@@ -20,7 +20,7 @@ new Sequence()
 .effect()
     .file("jb2a.scimitar.melee.01.purple")
     .atLocation(casterToken)
-    .reachTowards(target)
+    .stretchTo(target)
     .waitUntilFinished(-500)
 
 .effect()

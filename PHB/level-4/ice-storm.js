@@ -32,7 +32,7 @@ new Sequence()
     .file("autoanimations.range.firebolt.01.blue")
     .atLocation(tokenD)
     .startTime(350)
-    .reachTowards(templatePosition)
+    .stretchTo(templatePosition)
     .waitUntilFinished(-1000)
 
 

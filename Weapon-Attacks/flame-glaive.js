@@ -18,7 +18,7 @@ new Sequence()
 .effect()
     .file("jb2a.glaive.melee.01.orange")
     .atLocation(casterToken)
-    .reachTowards(target)
+    .stretchTo(target)
     .filter("Glow", { color: 0xFFC300 })
     .waitUntilFinished(-500)
 
