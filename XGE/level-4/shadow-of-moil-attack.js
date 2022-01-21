@@ -12,7 +12,8 @@ if (!casterToken) {
     return;
 }
 let target = Array.from(game.user.targets)[0];
-let damageTotal = game.modules.get("midi-qol").damageRoll ? .total ? ? 16;
+//Delete the comment on this line, formatting breaks the layout
+//let damageTotal = game.modules.get("midi-qol").damageRoll ?.total ?? 16;
 
 new Sequence()
 
