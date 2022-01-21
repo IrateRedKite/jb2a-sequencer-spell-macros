@@ -1,6 +1,7 @@
-await Sequencer.Preloader.preloadForClients(
+await Sequencer.Preloader.preloadForClients([
     "jb2a.energy_strands.complete.dark_red.01",
-    "jb2a.energy_strands.range.standard.dark_red.01")
+    "jb2a.energy_strands.range.standard.dark_red.01"
+], false)
 
 // remove the damage from the Shadow of Moil Chat Card, Create a new item and add the damage to it then apply the attack macro to that
 
@@ -11,7 +12,7 @@ if (!casterToken) {
     return;
 }
 let target = Array.from(game.user.targets)[0];
-let damageTotal = game.modules.get("midi-qol").damageRoll?.total ?? 16;
+let damageTotal = game.modules.get("midi-qol").damageRoll ? .total ? ? 16;
 
 new Sequence()
 
