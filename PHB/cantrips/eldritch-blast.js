@@ -1,6 +1,8 @@
 await Sequencer.Preloader.preloadForClients(
-    "jb2a.energy_strands.complete.dark_red.01",
-    "jb2a.eldritch_blast.dark_red")
+    ["jb2a.energy_strands.complete.dark_red.01",
+        "jb2a.eldritch_blast.dark_red",
+        "jb2a.static_electricity.02.red"
+    ], false)
 
 
 const casterToken = canvas.tokens.get(args[0].tokenId);

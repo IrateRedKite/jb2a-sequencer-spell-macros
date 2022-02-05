@@ -1,8 +1,10 @@
 //Preloading the Files to make sure they play a bit nicer when animatiing.
 await Sequencer.Preloader.preloadForClients(
-    "jb2a.fireball.beam.purple",
-    "jb2a.fireball.explosion.purple",
-    "jb2a.flames.01.purple")
+    ["jb2a.extras.tmfx.runes.circle.inpulse.evocation",
+        "jb2a.fireball.beam.purple",
+        "jb2a.fireball.explosion.purple",
+        "jb2a.flames.01.purple"
+    ], false)
 
 const casterToken = canvas.tokens.get(args[0].tokenId);
 if (!casterToken) {
@@ -43,9 +45,9 @@ sequence.effect()
 
 //blast mark from the forgotten adventures site, you need to find your own blast mark or use the agreed one by JB2A and FA
 sequence.effect()
-    .file("misc/Blast_Mark_A2_2x2.png")
+    .file("jb2a.ground_cracks.purple.01")
     .atLocation(templatePosition)
-    .scale(2)
+    .scale(1)
     .fadeIn(300)
     .duration(10000)
     .fadeOut(500)
