@@ -1,6 +1,7 @@
 await Sequencer.Preloader.preloadForClients(
-    "jb2a.scimitar.melee.01.purple",
-    "jb2a.markers.01.purplepink")
+    ["jb2a.scimitar.melee.01.purple",
+        "jb2a.markers.01.purplepink"
+    ], false)
 
 //This uses MIDI QOL to check for Hits before playing certain parts
 
@@ -20,7 +21,7 @@ new Sequence()
 .effect()
     .file("jb2a.scimitar.melee.01.purple")
     .atLocation(casterToken)
-    .reachTowards(target)
+    .stretchTo(target)
     .waitUntilFinished(-500)
 
 .effect()

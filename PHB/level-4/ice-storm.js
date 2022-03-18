@@ -1,8 +1,9 @@
 await Sequencer.Preloader.preloadForClients(
-    "jb2a.fire_bolt.blue",
-    "jb2a.extras.tmfx.inflow.circle.02",
-    "jb2a.magic_signs.circle.02.evocation.intro.blue",
-    "jb2a.ice_spikes.radial.burst.blue")
+    ["jb2a.fire_bolt.blue",
+        "jb2a.extras.tmfx.inflow.circle.02",
+        "jb2a.magic_signs.circle.02.evocation.intro.blue",
+        "jb2a.ice_spikes.radial.burst.blue"
+    ], false)
 
 const casterToken = canvas.tokens.get(args[0].tokenId);
 if (!casterToken) {
@@ -32,7 +33,7 @@ new Sequence()
     .file("autoanimations.range.firebolt.01.blue")
     .atLocation(tokenD)
     .startTime(350)
-    .reachTowards(templatePosition)
+    .stretchTo(templatePosition)
     .waitUntilFinished(-1000)
 
 
@@ -50,8 +51,7 @@ new Sequence()
 .effect()
     .file("jb2a.magic_signs.circle.02.evocation.intro.blue")
     .atLocation(templatePosition)
-    .JB2A()
-    .scale(1.5)
+    .scale(1)
     .waitUntilFinished(250)
     .belowTokens()
 

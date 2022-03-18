@@ -1,7 +1,8 @@
-await Sequencer.Preloader.preloadForClients(
+await Sequencer.Preloader.preloadForClients([
     "jb2a.energy_strands.complete.dark_red.01",
     "jb2a.darkness.black",
-    "jb2a.fire_ring.500px.red")
+    "jb2a.fire_ring.500px.red"
+], false)
 
 const casterToken = canvas.tokens.get(args[0].tokenId);
 if (!casterToken) {

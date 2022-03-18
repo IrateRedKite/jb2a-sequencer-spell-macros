@@ -1,6 +1,7 @@
 await Sequencer.Preloader.preloadForClients(
-    "jb2a.glaive.melee.01.orange",
-    "jb2a.flames.01.orange")
+    ["jb2a.glaive.melee.01.orange",
+        "jb2a.flames.01.orange"
+    ], false)
 
 //This uses MIDI QOL to check for Hits before playing certain parts
 const casterToken = canvas.tokens.get(args[0].tokenId);
@@ -18,7 +19,7 @@ new Sequence()
 .effect()
     .file("jb2a.glaive.melee.01.orange")
     .atLocation(casterToken)
-    .reachTowards(target)
+    .stretchTo(target)
     .filter("Glow", { color: 0xFFC300 })
     .waitUntilFinished(-500)
 

@@ -4,7 +4,7 @@ if (!casterToken) {
     return;
 }
 //get the template id from the canvas and its positions.
-const templatePosition = canvas.templates.placeables[canvas.templates.placeables.length-1];
+const templatePosition = canvas.templates.placeables[canvas.templates.placeables.length - 1];
 //get an array of the targets within the tempalte area.
 const targetLocations = Array.from(game.user.targets);
 
@@ -23,7 +23,7 @@ sequence.effect()
 sequence.effect()
     .file("jb2a.fireball.beam.orange")
     .atLocation(casterToken)
-    .reachTowards(templatePosition)
+    .stretchTo(templatePosition)
     .waitUntilFinished(-1800);
 
 sequence.effect()
