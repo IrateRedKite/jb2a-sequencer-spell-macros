@@ -1,4 +1,5 @@
 const casterToken = canvas.tokens.get(args[0].tokenId);
+const template = canvas.templates.placeables[canvas.templates.placeables.length-1];
 if (!casterToken) {
 	ui.notifications.warn("Please select a valid token to use this ability.");
 	return;
@@ -14,3 +15,6 @@ if (!casterToken) {
             .waitUntilFinished(-2000)
             .filter("Glow", { color: 0x7D87BF }) 
     .play();
+
+
+    canvas.scene.deleteEmbeddedDocuments("MeasuredTemplate", [template.data._id]);
