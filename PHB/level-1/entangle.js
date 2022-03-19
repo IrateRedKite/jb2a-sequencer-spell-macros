@@ -32,11 +32,13 @@ new Sequence()
         .filter("Glow", { color: 0x00ff00})    
     .effect()
         .file("jb2a.entangle.green")
-        .atLocation(template.position)
+        .atLocation(template.position, {cacheLocation: true})
         .fadeIn(1500)
         .persist()
         .fadeOut(1500)
-        .offset({ x: -140, y: -140 })
+        .offset({ x: -150, y: -150 })
         .name(`entangle-${template.id}`)
         .belowTokens()
 .play();
+
+//canvas.scene.deleteEmbeddedDocuments("MeasuredTemplate", [template.data._id]);
