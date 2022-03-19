@@ -22,16 +22,16 @@ new Sequence()
     .effect()
         .file("jb2a.call_lightning.low_res.blueorange")
         .atLocation(template.position)
-        .offset({ x: -100, y: -100 })
         .duration(1500)
         .fadeIn(500)
         .fadeOut(500)
         .opacity(0.5)
         .scale(0.3)
+        .offset({ x: -150, y: -150 })
     .effect()
         .file("jb2a.thunderwave.center.blue")
         .atLocation(template.position)
-        .offset({ x: -100, y: -100 })
+        .offset({ x: -150, y: -150 })
 .play();
 
 canvas.scene.deleteEmbeddedDocuments("MeasuredTemplate", [template.data._id]);
