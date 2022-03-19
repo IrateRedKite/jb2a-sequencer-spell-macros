@@ -36,9 +36,9 @@ new Sequence()
         .fadeIn(1500)
         .persist()
         .fadeOut(1500)
-        .offset({ x: -150, y: -150 })
+        .offset({ x: -200, y: -200 })
         .name(`entangle-${template.id}`)
         .belowTokens()
 .play();
 
-//canvas.scene.deleteEmbeddedDocuments("MeasuredTemplate", [template.data._id]);
+canvas.scene.deleteEmbeddedDocuments("MeasuredTemplate", [template.data._id]);
